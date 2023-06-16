@@ -1,21 +1,26 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Types } from "mongoose";
+import { type } from "os";
+import { Employee } from "src/employee/schemas/employee.schema";
 
-
-@Schema({
-    timestamps:true
-})
-export class Department{
+export type EmployeeDocument = Employee & Document;
+@Schema()
+export class Department {
     @Prop()
     Department_ID: number;
 
-    @Prop()
-    Name:string;
+    @Prop({ required: true })
+    Name: string;
 
-    @Prop()
-    Job_Role:string;
+    @Prop({ required: true })
+    Job_Role: string;
 
-    @Prop()
+    @Prop({ required: true })
     Job_Code: string;
+
+    // @Prop({ type: [{ type: Types.ObjectId, ref: 'Employee' }] })
+    // employees: Employee[];
 
 }
 export const DepartmentSchema = SchemaFactory.createForClass(Department)
+

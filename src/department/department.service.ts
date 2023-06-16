@@ -2,6 +2,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Department } from './Schemas/dipartment.schema';
 import * as mongoose from 'mongoose';
+import { updateDepartment } from './dto/update-Department.dto';
+import { createDepartment } from './dto/create-Department.dto';
 
 @Injectable()
 export class DepartmentService {
@@ -16,7 +18,7 @@ export class DepartmentService {
         return department;   
     }
 
-    async create(department:Department):Promise<Department>{
+    async create(department:createDepartment):Promise<Department>{
         const res = await this.DepModel.create(department)
         return res
     }
@@ -29,7 +31,7 @@ export class DepartmentService {
         return department;
     }
 
-    async updateDep(Department_ID:number,department:Department):Promise<Department>{
+    async updateDep(Department_ID:number,department:updateDepartment):Promise<Department>{
         return await this.DepModel.findOneAndUpdate({ Department_ID:Department_ID },department,{ new: true }).exec();
      
     }

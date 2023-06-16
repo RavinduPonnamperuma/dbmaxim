@@ -9,24 +9,22 @@ import {updateEmployee} from './dto/update-employee.dto'
 export class EmployeeController {
     constructor(private employeeService:EmployeeService){}
 
-    @Get()
-    async getAllEmp(): Promise<Employee[]>{
-        return this.employeeService.findAll()
-    }
 
     @Post()
     async createEmp(@Body()employee:createEmployee):Promise<Employee>{
         return this.employeeService.create(employee)
+        
     }
 
     @Get(':Emp_ID')
     async getEmpById(@Param('Emp_ID')Emp_ID:string): Promise<Employee>{
-        return this.employeeService.findById(parseInt(Emp_ID));
+        return this.employeeService.findEmployeeWithDepartment(parseInt(Emp_ID));
     }
 
     @Put(':Emp_ID')
     async updateEmp(@Param('Emp_ID') Emp_ID:string, @Body()employee:updateEmployee):Promise<Employee>{
         return this.employeeService.updateEmp(parseInt(Emp_ID),employee);
+
     }
 
     @Delete(':Emp_ID')

@@ -7,7 +7,7 @@ import { updateDepartment } from './dto/update-Department.dto';
 @Controller('department')
 export class DepartmentController {
     departmentService: any;
-    constructor(private department:DepartmentService){}
+    constructor(private readonly department:DepartmentService){}
 
     @Get()
     async getAllDepartment(): Promise<Department[]>{
@@ -35,5 +35,5 @@ export class DepartmentController {
     }
 
 
-
+     
 }
