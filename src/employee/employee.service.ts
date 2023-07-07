@@ -22,7 +22,7 @@ export class EmployeeService {
     }
 
     async create(employee: createEmployee): Promise<Employee> {
-        const Dept_Id = employee.Department_Id
+        const Dept_Id = employee.Emp_ID
         const Department = await this.departmentModel.findOne({ Department_ID: Dept_Id })
 
         if (!Department) {
@@ -31,18 +31,22 @@ export class EmployeeService {
         //create object we want to save 
         const Employee = {
             Emp_ID: employee.Emp_ID,
-            First_Name: employee.First_Name,
-            Last_Name: employee.Last_Name,
-            Email: employee.Email,
-            NIC: employee.NIC,
-            Join_Date: employee.Join_Date,
-            DOB: employee.DOB,
-            Gender: employee.Gender,
-            Department: Department
+            empCode: employee.empCode,
+            name: employee.name,
+            Department: Department,
+            email: employee.email,
+            contactNo: employee.contactNo,
+            status: employee.status,
+            createdAt: employee.createdAt,
+            updatedAt: employee.updatedAt,
+            deletedAt:employee.deletedAt
+            
 
         }
         const res = await this.emp.create(Employee)
         return res
+
+      
     }
 
     async findEmployeeWithDepartment(Emp_ID: number): Promise<Employee> {

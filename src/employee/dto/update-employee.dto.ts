@@ -1,12 +1,13 @@
 export class updateEmployee{
     readonly Emp_ID: number;
-    readonly First_Name:string;
-    readonly Last_Name:string;
-    readonly  Email: string;
+    readonly empCode:string;
+    readonly name:string;
     readonly   Department_ID: string;
-    readonly   NIC: string;
-    readonly   Join_Date: Date;
-    readonly   DOB: Date;
-    readonly  Gender:string;
+    readonly  email: string;
+    readonly   contactNo: string;
+    readonly   status: string;
+    readonly   createdAt: Date;
+    readonly  updatedAt:Date;
+    readonly deletedAt:Date;
    
 }

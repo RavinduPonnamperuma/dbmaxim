@@ -6,17 +6,26 @@ import { Employee } from "src/employee/schemas/employee.schema";
 export type EmployeeDocument = Employee & Document;
 @Schema()
 export class Department {
-    @Prop()
+    @Prop({required:true})
     Department_ID: number;
 
     @Prop({ required: true })
-    Name: string;
+    deptCode: string;
 
     @Prop({ required: true })
-    Job_Role: string;
+    deptName: string;
 
-    @Prop({ required: true })
-    Job_Code: string;
+    @Prop()
+    status: string;
+
+    @Prop()
+    createdAt: Date;
+
+    @Prop()
+    updateAt: Date;
+
+    @Prop()
+    deletedAt: Date;
 
     // @Prop({ type: [{ type: Types.ObjectId, ref: 'Employee' }] })
     // employees: Employee[];

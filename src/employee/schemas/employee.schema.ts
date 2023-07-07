@@ -1,40 +1,60 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Types } from "mongoose";
+import { Types } from "mongoose";  
 import { Department } from "src/department/Schemas/dipartment.schema";
 
-
-
-@Schema({
-    timestamps: true
-})
-export class Employee {
+@Schema()
+export class Name{
+    @Prop()
+    title:string;
+    
+    @Prop()
+    initials:string;
 
     @Prop()
+    last:string;
+
+    @Prop()
+    middle:string;
+
+    @Prop()
+    first:string;
+}
+
+
+@Schema()
+export class Employee {
+
+    @Prop({ required: true })
     Emp_ID: number;
 
     @Prop({ required: true })
-    First_Name: string;
+    empCode: string;
 
     @Prop()
-    Last_Name: string;
+    name: Name;
+
+    @Prop({ type: Types.ObjectId, ref: 'Department', foreignField: "Department_ID"})
+    Department: Department;
 
     @Prop({ required: true })
-    Email: string;
+    email: string;
 
     @Prop()
-    NIC: string;
+    contactNo: string;
 
     @Prop()
-    Join_Date: Date;
+    status: string;
 
     @Prop()
-    DOB: Date;
+    createdAt: string;
 
     @Prop()
-    Gender: string;
+    updatedAt: string;
 
-    @Prop({ type: Types.ObjectId, ref: 'Department', foreignField: "Department_ID" })
-    Department: Department;
+    @Prop()
+    deletedAt:string;
+
+   
 
 
 }
